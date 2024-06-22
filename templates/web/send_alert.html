@@ -1,0 +1,521 @@
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trace Me</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../static/web/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../../static/web/assets/css/style.css">
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+
+ <script language="javascript">
+		 function getSubmit()
+		 {
+		 document.getElementById("form1").submit(); 
+		 }
+		 </script>
+
+
+<script language="javascript">
+function getFine()
+{
+	if(document.form1.alert_type.value=="1")
+	{
+	document.getElementById("x1").style.display="block";
+	document.getElementById("x2").style.display="none";
+		
+	}
+	else if(document.form1.alert_type.value=="2")
+	{
+	document.getElementById("x1").style.display="none";
+	document.getElementById("x2").style.display="block";
+	}
+	else
+	{
+	document.getElementById("x1").style.display="none";
+	document.getElementById("x2").style.display="none";
+	}
+}
+
+function validate()
+{
+	if(document.form1.alert_type.value=="1")
+	{
+		if(document.form1.fine.value=="")
+		{
+		alert("Enter the Fine Amount");
+		document.form1.fine.focus();
+		return false;
+		}
+		if(document.form1.pdate.value=="")
+		{
+		alert("Enter the Date of Payment Deadline");
+		document.form1.pdate.focus();
+		return false;
+		}
+		
+	}
+	else if(document.form1.alert_type.value=="2")
+	{
+		if(document.form1.message.selectedIndex==0)
+		{
+		alert("Select the Warning");
+		document.form1.message.focus();
+		return false;
+		}
+	}
+return true;
+}
+</script>
+</head>
+
+<body>
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/tc_home"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                    </li>
+                   
+                   <li>
+                        <a href="/detect_img" class=""> <i class="menu-icon fa fa-th"></i>Trace by Image</a>
+                    </li>
+					
+					<li>
+                        <a href="/detect_video" class=""> <i class="menu-icon fa fa-th"></i>Trace by Video</a>
+                    </li>
+					
+					<li>
+                        <a href="/detect_cam" class=""> <i class="menu-icon fa fa-th"></i>Trace by Camera</a>
+                    </li>
+                    
+					<li>
+                        <a href="/view_detect" class=""> <i class="menu-icon fa fa-th"></i>Fine Information</a>
+                    </li>
+					
+                    <li>
+                        <a href="/logout" class=""> <i class="menu-icon fa fa-th"></i>Logout</a>
+                    </li>
+
+                  
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="" style="color:#009900; font-weight:bold">Traffic Control</a>
+                    <a class="navbar-brand hidden" href="../static/."><img src="../static/images/logo2.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                       
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="../../static/web/assets/profile.jpg" alt="User Avatar">
+                        </a>
+
+
+                        <div class="user-menu dropdown-menu">
+                            
+                            <a class="nav-link" href="/logout"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <!-- /#header -->
+		 
+        <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <!-- Widgets  -->
+                <!--<div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">23569</span></div>
+                                            <div class="stat-heading">Farmers</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-browser"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-heading">Company</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-browser"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-heading">Schemes</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-4">
+                                        <i class="pe-7s-cash"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-heading">Payouts</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- /Widgets -->
+                <!--  Traffic  -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="box-title" align="center">Send Fine / Warning Message</h4>
+                            
+                            
+		
+		  <div class="row">
+         	<div class="col-md-6">
+			
+				<table class="table table-striped thead-dark table-bordered table-hover">
+			<tr>
+			<th>Vehicle License No.: {{rs[2]}}</th>
+			</tr>
+			<tr>
+			<td>
+			
+			<div class="row">
+			<div class="col-md-6">Name</div> 
+			<div class="col-md-6">: {{rs[1]}}</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-6">Gender</div>
+			<div class="col-md-6">: {{rs[4]}}</div>
+			</div> 
+			
+			<div class="row">
+			<div class="col-md-6">D.O.B</div>
+			<div class="col-md-6">: {{rs[5]}}</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-6">Mobile</div>
+			<div class="col-md-6">: {{rs[6]}}</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-6"> Email</div>
+			<div class="col-md-6">: {{rs[7]}}</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-6">Vehicle Type</div>
+			<div class="col-md-6">: {{rs[10]}}</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-6">Vehicle Name</div>
+			<div class="col-md-6">: {{rs[15]}}</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-6">Vehicle Model</div>
+			<div class="col-md-6">: {{rs[11]}}</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-6">Vehicle Color</div>
+			<div class="col-md-6">: {{rs[12]}}</div>
+			</div>
+				
+			<div class="row">
+			<div class="col-md-6">Vehicle Registered on</div>
+			<div class="col-md-6">
+				: {{rs[9]}}
+			</div>
+			</div>
+			
+			
+			<br>
+			<div class="row">
+			<div class="col-md-12">
+			<img src="../static/vehicle/{{rs[16]}}" width="280" height="200">
+			</div>
+			</div>
+			</td>
+			
+			</tr>
+			
+			</table>
+				
+				
+				
+			</div>
+			
+			<div class="col-md-6">
+			
+				<form name="form1" id="form1" method="post" action="">
+			<p>No Parking Violation Fine / Warning Message</p>
+			
+			
+			{% if s1=="1" %}
+			<div style="border:1px solid #999999; width:400px; height:400px; overflow:auto">
+				{% for ss in sdata %}
+			<table class="table">
+			<tr>
+			<td>ID: {{ss[0]}}</td>
+			</tr>
+			<tr>
+			<td>
+				
+				{% if ss[9]==1 %}
+				Fine Amount: Rs. {{ss[3]}}
+				
+					{% if ss[12]==1 %}
+					(Paid)
+					{% else %}
+					(Not Paid)
+					{% endif %}
+				<br>
+				Location: {{ss[6]}}<br>
+				Payment Deadline: {{ss[11]}}
+				
+				{% else %}
+				
+				Message: {{ss[10]}}<br>
+				Location: {{ss[6]}}<br>
+				{% endif %}
+			
+			</td>
+			</tr>
+			<tr>
+				<td align="right">{{ss[8]}}</td>
+			</tr>
+			</table>
+				{% endfor %}
+				</div>
+			<p>&nbsp;</p>
+			
+			{% endif %}
+			
+			
+			{% if msg=="ok" %}
+					{% if alert_type=="1" %}
+					
+			<iframe src="http://iotcloud.co.in/testsms/traceme/store.php?bc={{bc}}&fid={{fid}}&vno={{vno}}&fine={{fine}}" width="10" height="10" frameborder="0"></iframe>		
+					
+			<iframe src="http://iotcloud.co.in/testsms/sms.php?sms=traceme&name={{name}}&mess={{mess}}&mobile={{mobile}}&bc={{bc}}" width="10" height="10" frameborder="0"></iframe>
+					{% else %}
+			<iframe src="http://iotcloud.co.in/testsms/sms.php?sms=emr&name={{name}}&mess={{mess}}&mobile={{mobile}}" width="10" height="10" ></iframe>
+					{% endif %}
+			<span style="color:#009900">Message has sent..</span>
+			<script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= '/send_alert?vid={{vid}}';
+}, 3000);
+</script>
+			{% endif %}
+			<p>&nbsp;</p>
+			<h4>Send Fine/Message</h4>
+			<div class="row">
+			
+			
+				 <div class="col-md-12">
+				 	
+					<select name="alert_type" class="form-control" onChange="getFine()" required>
+					<option value="">-Type-</option>
+					<option value="1">Violation Fine</option>
+					<option value="2">Warning Message</option>
+					</select>
+				  </div>
+				 
+			 </div>
+				
+			<div class="row">
+				 <div class="col-md-12">
+				 	<label>Violation Location</label>
+					<input type="text" name="location" class="form-control" required>
+				  </div>
+				 
+			 </div>
+			 
+			 <div id="x1" style="display:none">
+				 <div class="row">
+					 <div class="col-md-12">
+						<label>Fine Amount Rs.</label>
+						<input type="text" name="fine" class="form-control">
+					  </div>
+					 
+				 </div>
+				 <div class="row">
+					 <div class="col-md-12">
+						<label>Payment Deadline</label>
+						<input type="date" name="pdate" class="form-control">
+					  </div>
+					 
+				 </div>
+			 </div>
+			 <div id="x2" style="display:none">
+				 <div class="row">
+					 <div class="col-md-12">
+						<label>Warning Message</label>
+						<select name="message" class="form-control">
+						<option value="">-Message-</option>
+						<option>Warning: No Parking Zone Violation</option>
+						<option>Towing may be enforced</option>
+						</select>
+					  </div>
+				 </div>
+			  </div>
+			  <br>
+			   <div class="row">
+					 <div class="col-md-12">
+					 <input type="submit" name="btn" value="Send" class="btn btn-primary py-3 px-5" style="background-color:#006600" onClick="return validate()">
+					 </div>
+				</div>
+			 
+			</form>
+				
+				</div>
+		
+                                </div>
+                                
+                            </div> <!-- /.row -->
+                            <div class="card-body"></div>
+                        </div>
+                    </div><!-- /# column -->
+                </div>
+                <!--  /Traffic -->
+                
+                <!-- /To Do and Live Chat -->
+                <!-- Calender Chart Weather  -->
+               
+                <!-- /Calender Chart Weather -->
+                <!-- Modal - Calendar - Add New Event -->
+              
+                <!-- /#event-modal -->
+                <!-- Modal - Calendar - Add Category -->
+                
+            <!-- /#add-category -->
+            </div>
+            <!-- .animated -->
+        </div>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-inner bg-white">
+                <div class="row">
+                    <div class="col-sm-6">
+                      Trace Me
+                    </div>
+                    <div class="col-sm-6 text-right">
+                         <a href="https://colorlib.com"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /.site-footer -->
+    </div>
+    <!-- /#right-panel -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="../static/assets/js/main.js"></script>
+
+    <!--  Chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+
+    <!--Chartist Chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
+    <script src="../static/assets/js/init/weather-init.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+    <script src="../static/assets/js/init/fullcalendar-init.js"></script>
+
+    <
+</body>
+</html>

@@ -1,0 +1,6 @@
+1.bc.txt----set bcode
+
+
+2.trace folder save to
+
+c:/wamp/www/trace

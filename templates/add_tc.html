@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <title>Zone Zapper</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
+    
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../static/css/aos.css">
+
+    <link rel="stylesheet" href="../static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="../static/css/flaticon.css">
+    <link rel="stylesheet" href="../static/css/icomoon.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+<script language="javascript">
+function validate()
+{
+	if(document.form1.name.value=="")
+	{
+	alert("Enter the Name");
+	document.form1.name.focus();
+	return false;
+	}
+	
+	if(document.form1.mobile.value=="")
+	{
+	alert("Enter the Mobile No.");
+	document.form1.mobile.focus();
+	return false;
+	}
+	if(isNaN(document.form1.mobile.value))
+	{
+	alert("Invalid Mobile No.");
+	document.form1.mobile.select();
+	return false;
+	}
+	if(document.form1.mobile.value.length!=10)
+	{
+	alert("Mobile No. must be 10 digits!");
+	document.form1.mobile.select();
+	return false;
+	}
+	if(document.form1.email.value=="")
+	{
+	alert("Enter the Email");
+	document.form1.email.focus();
+	return false;
+	}
+	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.form1.email.value))  
+	{
+	
+	}
+	else
+	{
+	alert("Invalid E-mail!");
+	document.form1.email.select();
+	return false;
+	}
+	if(document.form1.city.value=="")
+	{
+	alert("Enter the City");
+	document.form1.city.focus();
+	return false;
+	}
+	if(document.form1.area.value=="")
+	{
+	alert("Enter the Area");
+	document.form1.area.focus();
+	return false;
+	}
+	
+return true;
+}
+</script>
+
+  </head>
+  <body>
+    
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="">Zone  <span>Zapper</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="/admin" class="nav-link">Home</a></li>
+			  <li class="nav-item"><a href="/add_tc" class="nav-link">Traffic Department</a></li>
+	          <li class="nav-item"><a href="/add_rto" class="nav-link">RTO Department</a></li>
+			  <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+   <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../static/images/sp2.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+          <div class="col-md-9 ftco-animate pb-5">
+          
+            <h1 class="mb-3 bread"></h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+        	<div class="col-md-4">
+        		<div class="row mb-5">
+		          <div class="col-md-12">
+		          	<div class="border w-100 p-4 rounded mb-2 d-flex">
+			          	<div class="icon mr-3">
+			          		<span class="icon-map-o"></span>
+			          	</div>
+			            <p>Zone <span>Zapper</span></p>
+			          </div>
+		          </div>
+		          <div class="col-md-12">
+		          	<div class="border w-100 p-4 rounded mb-2 d-flex">
+			          	<div class="icon mr-3">
+			          		<span class="icon-mobile-phone"></span>
+			          	</div>
+			            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+			          </div>
+		          </div>
+		          <div class="col-md-12">
+		          	<div class="border w-100 p-4 rounded mb-2 d-flex">
+			          	<div class="icon mr-3">
+			          		<span class="icon-envelope-o"></span>
+			          	</div>
+			            <p><span>Email:</span> <a href="mailto:info@yoursite.com">vehicle@info.com</a></p>
+			          </div>
+		          </div>
+		        </div>
+          </div>
+          <div class="col-md-8 block-9 mb-md-5">
+		  
+		  <h2>Traffic Department</h2>
+		  <p>Add Traffic Police Details</p>
+		  
+		  {% if msg=="success" %}
+		 	<span style="color:#009900">Traffic Police Details Added and Sent to Mail..</span>
+			
+			
+			 <iframe src="http://iotcloud.co.in/testmail/testmail1.php?message={{mess}}&email={{email}}&subject=Traffic Police" width="10" height="10" frameborder="0"></iframe>
+			 
+			<script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= '/add_tc';
+}, 3000);
+</script>
+			
+		  {% endif %}
+		  
+            <form name="form1" method="post" action="">
+			  
+			  <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Name">
+              </div>
+			  <div class="form-group">
+                <input type="text" name="mobile" class="form-control" placeholder="Mobile No." maxlength="10">
+              </div>
+			  <div class="form-group">
+                <input type="text" name="email" class="form-control" placeholder="Email">
+              </div>
+			 
+			  <div class="form-group">
+                <input type="text" name="area" class="form-control" placeholder="Area">
+              </div>
+			  
+			  <div class="form-group">
+                <input type="text" name="city" class="form-control" placeholder="City">
+              </div>
+			  
+			 <div class="form-group">
+                <input type="submit" name="btn" value="Add" class="btn btn-primary py-3 px-5" onClick="return validate()">
+              </div>
+			  
+			</form>
+			<p>&nbsp;</p>
+			
+			{% for rs in data %}
+			<table class="table table-striped thead-dark table-bordered table-hover">
+			<tr>
+			<th>Traffic Police ID: {{rs[6]}}</th>
+			</tr>
+			<tr>
+			<td>
+				Name: {{rs[1]}}<br>
+				Mobile No.: {{rs[2]}}<br>
+				Email: {{rs[3]}}<br>
+				Area: {{rs[4]}}<br>
+				City: {{rs[5]}}<br>
+				
+				<a href="/add_tc?act=del&did={{rs[0]}}">Delete</a>
+			</td>
+			</tr>
+			
+			</table>
+			{% endfor %}
+			
+			
+			
+          </div>
+        </div>
+        
+      </div>
+    </section>
+	
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+ Zone Zapper<a href="https://colorlib.com" target="_blank"></a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/jquery.waypoints.min.js"></script>
+  <script src="../static/js/jquery.stellar.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.magnific-popup.min.js"></script>
+  <script src="../static/js/aos.js"></script>
+  <script src="../static/js/jquery.animateNumber.min.js"></script>
+  <script src="../static/js/bootstrap-datepicker.js"></script>
+  <script src="../static/js/jquery.timepicker.min.js"></script>
+  <script src="../static/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="../static/js/google-map.js"></script>
+  <script src="../static/js/main.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="../../static/web/assets/css/cs-skin-elastic.css">
+<link rel="stylesheet" href="../../static/web/assets/css/style.css">
+</head>
+
+<body>
+
+<p align="center"><img src="../static/getimg.jpg" width="350" height="350"></p>
+
+{% if st=="1" %}
+				
+  <h5 align="center">License Number</h5>
+  <p align="center">{{np_text}}</p>
+  
+  
+   {% if uu=="1" %}
+	  <script>
+	//Using setTimeout to execute a function after 5 seconds.
+	setTimeout(function () {
+	   //Redirect with JavaScript
+	   window.parent.location.href= '/send_alert?vid={{vid}}';
+	}, 6000);
+	</script>
+	{% endif %}
+
+{% else %}
+
+<p align="center" style="color:#FF0000">Not Predicted!</p>
+ <script>
+	//Using setTimeout to execute a function after 5 seconds.
+	setTimeout(function () {
+	   //Redirect with JavaScript
+	   window.parent.location.href= '/detect_cam';
+	}, 5000);
+	</script>
+
+{% endif %}
+<p>&nbsp;</p>
+
+
+
+</body>
+</html>
